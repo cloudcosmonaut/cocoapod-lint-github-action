@@ -1,0 +1,21 @@
+name: 'cocoapod-lint-github-action'
+description: 'GitHub Action to perform Cocoapod lib lint validation.'
+branding:
+  icon: 'check'
+  color: 'orange'
+inputs:
+  podspec:
+    description: 'Location of Podspec describing your Pod.'
+    required: true
+  no-clean:
+    description: 'Lint leaves the build directory intact for inspection.'
+    required: false
+    default: false
+  allow-warnings:
+    description: 'Lint validates even if warnings are present.'
+    required: false
+    default: false
+runs:
+  using: 'node12'
+  main: 'index.js'
+
