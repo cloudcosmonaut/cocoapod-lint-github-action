@@ -16,17 +16,20 @@ try {
     }
   })
   
-  var lintCommand = `pod lib lint ${podspec}`
+  var lintCommand = 'pod lib lint'
+  var lintArguments = [
+    $podspec
+  ]
 
   if (noClean) {
-    lintCommand = `${lintCommand} --no-clean`
+    lintArguments.push = '--no-clean'
   }
 
   if (allowWarnings) {
-    lintCommand = `${lintCommand} --allow-warnings`
+    lintArguments.push = '--allow-warnings'
   }
 
-  const result = exec.exec(lintCommand)
+  const result = exec.exec(lintCommand, lintArguments)
     if (result != 0) {
       core.setFailed('Cocoapod linting failed')
     }
